@@ -296,11 +296,10 @@ u32 get_sdr_cs_size(u32 offset)
 #endif
 
 /*********************************************************************
- * config_3430sdram_ddr() - Init DDR on 3430SDP dev board.
+ * sdrc_init() - Configure SDRC
  *********************************************************************/
-void config_3430sdram_ddr(void)
+void sdrc_init(void)
 {
-
 #ifndef CONFIG_DDR_256MB_STACKED
 	/* reset sdrc controller */
 	__raw_writel(SOFTRESET, SDRC_SYSCONFIG);
@@ -936,12 +935,6 @@ void s_init(void)
 	delay(100);
 	prcm_init();
 	per_clocks_enable();
-	/*
-	 * WORKAROUND: To suuport both Micron and Hynix NAND/DDR parts
-	 */
-	if ((get_mem_type() == GPMC_NAND) || (get_mem_type() == MMC_NAND))
-		nand_init();
-	config_3430sdram_ddr();
 }
 
 /*******************************************************

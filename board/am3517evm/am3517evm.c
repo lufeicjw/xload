@@ -262,9 +262,9 @@ u32 wait_on_value(u32 read_bit_mask, u32 match_value, u32 read_addr, u32 bound)
 }
 
 /*********************************************************************
- * config_emif4_ddr() - Init/Configure DDR on AM3517 EVM board.
+ * emif_init() - Configure EMIF4
  *********************************************************************/
-void config_emif4_ddr(void)
+void emif_init(void)
 {
 	unsigned int regval;
 
@@ -571,9 +571,6 @@ void s_init(void)
 
 	/* bring cpgmac out of reset */
 	sr32((OMAP34XX_CTRL_BASE + 0x598), 1, 1, 0x1);
-
-	/* Configure the EMIF4 for our DDR */
-	config_emif4_ddr();
 }
 
 /*******************************************************

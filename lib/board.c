@@ -46,6 +46,19 @@ int print_info(void)
 }
 #endif
 
+/**
+ * Initialize available memory
+ */
+int mem_init(void)
+{
+#ifdef CONFIG_AM3517EVM
+	emif_init();
+#else
+	sdrc_init();
+#endif
+	return 0;
+}
+
 typedef int (init_fnc_t) (void);
 
 init_fnc_t *init_sequence[] = {
@@ -55,7 +68,8 @@ init_fnc_t *init_sequence[] = {
  	serial_init,		/* serial communications setup */
 	print_info,
 #endif
-  	nand_init,		/* board specific nand init */
+	nand_init,		/* board specific nand init */
+	mem_init,		/* board specific memory init */
   	NULL,
 };
 

@@ -311,9 +311,9 @@ u32 wait_on_value(u32 read_bit_mask, u32 match_value, u32 read_addr, u32 bound)
 
 #ifdef CFG_3430SDRAM_DDR
 /*********************************************************************
- * config_3430sdram_ddr() - Init DDR on 3430SDP dev board.
+ * sdrc_init() - Configure SDRC
  *********************************************************************/
-void config_3430sdram_ddr(void)
+void sdrc_init(void)
 {
 	/* reset sdrc controller */
 	__raw_writel(SOFTRESET, SDRC_SYSCONFIG);
@@ -871,7 +871,6 @@ void s_init(void)
 	delay(100);
 	per_clocks_enable();
 	prcm_init();
-	config_3430sdram_ddr();
 }
 
 /*******************************************************
