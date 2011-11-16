@@ -765,6 +765,15 @@ void prcm_init(void)
 	}
 
 	if (is_cpu_family() == CPU_OMAP36XX) {
+		/*
+		 * On Warm (Watchdog,RST_GS,emulator) reset after the ROM gets
+		 * executed the DPLL4_CLKINP_DIV is set. It SHOULD be clear,
+		 * otherwise all of the peripherals will be running 6.5 times
+		 * slower than they should making it appear as though the reset
+		 * did not take place
+		 */
+		sr32(PRM_CLKSRC_CTRL, 8, 1, 0);
+
 		dpll3_init_36xx(0, clk_index);
 		dpll4_init_36xx(0, clk_index);
 		mpu_init_36xx(0, clk_index);
