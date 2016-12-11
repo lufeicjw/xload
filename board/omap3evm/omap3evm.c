@@ -359,7 +359,7 @@ void sdrc_init(void)
          __raw_writel(SDP_SDRC_SHARING, SDRC_SHARING);
 
          /* SDRC_MCFG0 register */
-         (*(unsigned int*)0x6D000080) = 0x02584099;//from Micron
+         (*(unsigned int*)0x6D000080) = 0x03588099;//from Micron
 
 	 if (is_cpu_family() == CPU_OMAP36XX) {
 		 if (is_ddr_166M) {

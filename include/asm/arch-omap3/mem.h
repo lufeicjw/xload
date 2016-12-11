@@ -70,7 +70,7 @@ typedef enum {
 #ifdef CONFIG_3430ZEBU
 #define SDP_SDRC_MDCFG_0_DDR	(0x02582019|B_ALL) /* Infin ddr module */
 #else
-#define SDP_SDRC_MDCFG_0_DDR	(0x02584019|B_ALL)
+#define SDP_SDRC_MDCFG_0_DDR	(0x03588019|B_ALL)
 #define SDP_SDRC_MDCFG_0_DDR_XM	(0x03588019|B_ALL)
 #endif
 
