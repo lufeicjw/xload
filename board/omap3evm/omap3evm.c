@@ -33,6 +33,8 @@
 #include <asm/arch/sys_info.h>
 #include <asm/arch/clocks.h>
 #include <asm/arch/mem.h>
+#include <i2c.h>
+#include <twl4030.h>
 
 /* Used to index into DPLL parameter tables */
 struct dpll_param {
@@ -952,6 +954,13 @@ void s_init(void)
  ********************************************************/
 int misc_init_r (void)
 {
+#ifdef CONFIG_DRIVER_OMAP34XX_I2C
+		i2c_init(CONFIG_SYS_I2C_SPEED, CONFIG_SYS_I2C_SLAVE);
+#endif
+	
+#ifdef CONFIG_TWL4030_LED
+		twl4030_led_init(TWL4030_LED_LEDEN_LEDAON | TWL4030_LED_LEDEN_LEDBON);
+#endif
 	return(0);
 }
 
