@@ -315,6 +315,7 @@ void sdrc_init(void)
 	__raw_writel(SDP_SDRC_MDCFG_0_DDR, SDRC_MCFG_0);
 
 	/* set timing */
+	#if 0
 	if (is_cpu_family() == CPU_OMAP36XX) {
 		if (is_ddr_166M) {
 			__raw_writel(MICRON_SDRC_ACTIM_CTRLA_0, SDRC_ACTIM_CTRLA_0);
@@ -334,7 +335,10 @@ void sdrc_init(void)
 			__raw_writel(MICRON_SDRC_ACTIM_CTRLB_0, SDRC_ACTIM_CTRLB_0);
 		}
 	 }
-
+	 #else
+			__raw_writel(ISSI_SDRC_ACTIM_CTRLA_0, SDRC_ACTIM_CTRLA_0);
+			__raw_writel(ISSI_SDRC_ACTIM_CTRLB_0, SDRC_ACTIM_CTRLB_0);
+	 #endif
 	__raw_writel(SDP_SDRC_RFR_CTRL, SDRC_RFR_CTRL_0);
 	__raw_writel(SDP_SDRC_POWER_POP, SDRC_POWER);
 
@@ -1138,6 +1142,8 @@ void per_clocks_enable(void)
 	MUX_VAL(CP(UART1_RTS),      (IDIS | PTD | DIS | M0)) /*UART1_RTS*/\
 	MUX_VAL(CP(UART1_CTS),      (IEN | PTU | DIS | M0)) /*UART1_CTS*/\
 	MUX_VAL(CP(UART1_RX),       (IEN | PTD | DIS | M0)) /*UART1_RX*/\
+	MUX_VAL(CP(UART3_RX_IRRX),	(IEN  | PTD | DIS | M0)) /*UART3_RX_IRRX*/\
+	MUX_VAL(CP(UART3_TX_IRTX),	(IDIS | PTD | DIS | M0)) /*UART3_TX_IRTX*/\
 	MUX_VAL(CP(McBSP1_DX),      (IEN  | PTD | DIS | M4)) /*GPIO_158*/\
 	MUX_VAL(CP(SYS_32K),        (IEN  | PTD | DIS | M0)) /*SYS_32K*/\
 	MUX_VAL(CP(SYS_BOOT0),      (IEN  | PTD | DIS | M4)) /*GPIO_2 */\
