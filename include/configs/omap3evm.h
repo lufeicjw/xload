@@ -142,7 +142,7 @@
 
 #define CFG_NAND_K9F1G08R0A    /* Samsung 8-bit 128MB chip large page NAND chip*/
 #define NAND_16BIT
-#define ECC_HW_ENABLE
+//#define ECC_HW_ENABLE
 
 /* NAND is partitioned:
  * 0x00000000 - 0x0007FFFF  Booting Image
