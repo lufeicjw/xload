@@ -92,13 +92,13 @@
 #define CFG_NS16550_SERIAL
 #define CFG_NS16550_REG_SIZE     (-4)
 #define CFG_NS16550_CLK          (48000000)
-#define CFG_NS16550_COM1         OMAP34XX_UART1
+#define CFG_NS16550_COM3         OMAP34XX_UART3
 
 /*
  * select serial console configuration
  */
-#define CONFIG_SERIAL1           1    /* UART1 on OMAP3EVM */
-#define CONFIG_CONS_INDEX        1
+#define CONFIG_SERIAL1           3    /* UART1 on OMAP3EVM */
+#define CONFIG_CONS_INDEX        3
 
 #define CONFIG_BAUDRATE          115200
 #define CFG_PBSIZE               256
@@ -111,7 +111,7 @@
 #define CONFIG_SYS_I2C_SLAVE		1
 #define CONFIG_SYS_I2C_BUS		0
 #define CONFIG_SYS_I2C_BUS_SELECT	1
-#define CONFIG_DRIVER_OMAP34XX_I2C	1
+//#define CONFIG_DRIVER_OMAP34XX_I2C	1
 
 /*
  * TWL4030

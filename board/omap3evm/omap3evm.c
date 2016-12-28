@@ -1024,6 +1024,10 @@ void per_clocks_enable(void)
 	/* Enable UART1 clocks */
 	sr32(CM_FCLKEN1_CORE, 13, 1, 0x1);
 	sr32(CM_ICLKEN1_CORE, 13, 1, 0x1);
+
+	/* Enable UART3 clocks */
+	sr32(CM_FCLKEN_PER, 11, 1, 0x1);
+	sr32(CM_ICLKEN_PER, 11, 1, 0x1);
 #endif
 
 #ifdef CONFIG_MMC
